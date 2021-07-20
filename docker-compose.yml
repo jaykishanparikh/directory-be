@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  postgres:
+    image: library/postgres:latest
+    container_name: directory_db
+    environment:
+      - POSTGRES_DB=directorydb
+      - POSTGRES_USER=directory
+      - POSTGRES_PASSWORD=directory
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/directory_data:/var/lib/postgresql/data
+  app:
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        env: local
+    container_name: directory_be
+    environment:
+      JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,address=8000,suspend=n
+    ports:
+      - 8080:8080
+      - 8000:8000
+    volumes:
+      - ~/directory_home:/usr/local/tomcat/app-home
+volumes:
+  directory_data:

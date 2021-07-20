@@ -1,0 +1,222 @@
+{
+  "info": {
+    "_postman_id": "b8afc095-4adf-42c7-8bf7-0cb7f35d5283",
+    "name": "Telephone Directory",
+    "description": "This is a backend APIs that allows channels to perform various operations on Customer and PhoneNumber.\nCustomer APIs\n1. Get all customers\n2. Create new customer\n3. Get customer phone numbers\n\nPhoneNumber APIs\n1. Add a phone number\n2. Activate phone number (Allocate number to Customer)\n\nHealth APIs\n1. Check the status of the backend project.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "api_health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/app/directory/manage/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "app",
+            "directory",
+            "manage",
+            "health"
+          ]
+        },
+        "description": "Health check endpoint"
+      },
+      "response": []
+    },
+    {
+      "name": "phonenumbers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/app/directory/phoneNumbers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "app",
+            "directory",
+            "phoneNumbers"
+          ]
+        },
+        "description": "Returns all phone numbers from the directory."
+      },
+      "response": []
+    },
+    {
+      "name": "Add phone number",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"phone\" : \"0469345892\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/app/directory/phoneNumber",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "app",
+            "directory",
+            "phoneNumber"
+          ]
+        },
+        "description": "Adds new phone number into the directory."
+      },
+      "response": []
+    },
+    {
+      "name": "Add Customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\" : \"John Cave\",\n    \"emailId\" : \"johncave@gmail.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/app/directory/customer",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "app",
+            "directory",
+            "customer"
+          ]
+        },
+        "description": "Adds new customer."
+      },
+      "response": []
+    },
+    {
+      "name": "Activate Number",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"phoneNumbers\" : [\n        {\"id\": \"1\"}\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/app/directory/customer/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "app",
+            "directory",
+            "customer",
+            "2"
+          ]
+        },
+        "description": "Activate phone number by allocating it to customer."
+      },
+      "response": []
+    },
+    {
+      "name": "cusotmer phone numbers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/app/directory/customer/2/phoneNumbers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "app",
+            "directory",
+            "customer",
+            "2",
+            "phoneNumbers"
+          ]
+        },
+        "description": "Returns list of phone numbers allocated to customer."
+      },
+      "response": []
+    },
+    {
+      "name": "customers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/app/directory/customers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "app",
+            "directory",
+            "customers"
+          ]
+        },
+        "description": "Returns list of all customers."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
